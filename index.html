@@ -5,5 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Summarizer</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1>Text Summarizer</h1>
+      <h3>Using Hugging Face Transformers</h3>
+      <p>Write or paste your text here to get a summary:</p>
+
+      <form id="summarization-form">
+        <textarea
+          id="dialogue-input"
+          placeholder="Enter your text here..."
+          required
+        ></textarea>
+        <button type="submit">Summarize</button>
+      </form>
+
+      <div class="summary-output">
+        <h3 id="summary-heading">Content Summary</h3>
+        <p id="summary-text"></p>
+      </div>
+    </div>
+  </body>
 </html>
