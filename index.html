@@ -4,6 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Summarizer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff7ed;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #fb923c;
+      }
+
+      h3 {
+        text-align: center;
+        margin-top: -20px;
+        margin-bottom: 40px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      textarea {
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        margin-top: 10px;
+        background-color: #fb923c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #f97316;
+      }
+
+      .summary-output {
+        margin-top: 20px;
+        background: #ffedd5;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #summary-heading {
+        margin-top: 0;
+        margin-bottom: 0px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
