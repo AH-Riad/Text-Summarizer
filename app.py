@@ -7,4 +7,5 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
 import re
 
-app = FastAPI()
+# Initialize the FastAPI app
+app = FastAPI(title = "T5 Text Generation APP", description = "Text Summarization using T5 model", version = "1.0")
