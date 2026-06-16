@@ -40,3 +40,33 @@ def clean_data(text):
 
     return text
 
+def summarize_dialogue(dialogue):
+  dialogue = clean_data(dialogue)   # clean
+
+  # Tokenize
+  inputs = tokenizer(
+      dialogue,
+      padding = "max_length",
+      max_length = 512,
+      truncation = True,
+      return_tensors = "pt"
+  ).to(device)
+
+  # Generate the summary => token_ids
+  model.to(device)
+
+  targets = model.generate(
+      input_ids = inputs['input_ids'],
+      attention_mask = inputs['attention_mask'],
+      max_length = 150,
+      num_beams = 4,
+      repetition_penalty = 2.5,
+      length_penalty = 1.0,
+      early_stopping = True
+  )
+
+  # decode our output
+
+  summary = tokenizer.decode(targets[0], skip_special_tokens=True)
+
+  return summary
