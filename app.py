@@ -23,3 +23,20 @@ else:
     device = torch.device("cpu")
 
 model.to(device)
+
+# Set up Jinja2 templates
+templates = Jinja2Templates(directory=("."))
+
+# Input schema for dialogue => string
+class DialogueInput(BaseModel):
+    dialogue: str
+    
+def clean_data(text):
+    text = str(text)
+    text = re.sub(r"\r\n", " ", text) #Lines
+    text = re.sub(r"\s+", " ", text) #Spaces
+    text = re.sub(r"<.*?>", " ", text) # html tags
+    text = text.strip().lower()
+
+    return text
+
