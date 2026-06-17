@@ -115,6 +115,7 @@
           // Show loading state
           summaryButton.disabled = true;
           summaryButton.textContent = "Summarizing...";
+          summaryText.innerText = "Processing...";
 
           try {
             const response = await fetch("/summarize/", {
