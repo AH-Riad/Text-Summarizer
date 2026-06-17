@@ -98,5 +98,50 @@
         <p id="summary-text"></p>
       </div>
     </div>
+    <script>
+      document
+        .getElementById("summarization-form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const dialogueInput = document.getElementById("dialogue-input");
+          const summaryText = document.getElementById("summary-text");
+          const summaryButton = document.querySelector("button");
+
+          const dialogue = dialogueInput.value.trim();
+          if (!dialogue) {
+            summaryText.textContent = "Please enter some text to summarize.";
+            return;
+          }
+          // Show loading state
+          summaryButton.disabled = true;
+          summaryButton.textContent = "Summarizing...";
+
+          try {
+            const response = await fetch("/summarize/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ dialogue: dialogue }),
+            });
+
+            if (!response.ok) {
+              throw new Error(`server error: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            document.getElementById("summary-text").textContent =
+              data.summary || "No summary available.";
+          } catch (error) {
+            console.error("Error:", error);
+            document.getElementById("summary-text").textContent =
+              "An error occurred while summarizing the text.";
+          } finally {
+            // Reset loading state
+            summaryButton.disabled = false;
+            summaryButton.textContent = "Summarize";
+          }
+        });
+    </script>
   </body>
 </html>
