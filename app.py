@@ -40,7 +40,7 @@ def clean_data(text):
 
     return text
 
-def summarize_dialogue(dialogue):
+def summarize_dialogue(dialogue:str) -> str:
   dialogue = clean_data(dialogue)   # clean
 
   # Tokenize
@@ -70,3 +70,13 @@ def summarize_dialogue(dialogue):
   summary = tokenizer.decode(targets[0], skip_special_tokens=True)
 
   return summary
+
+# API endpoint for summarization
+@app.post("/summarize/")
+async def summarize(dialogue_input: DialogueInput):
+    summary = summarize_dialogue(dialogue_input.dialogue)
+    return {"summary": summary}
+
+@app.get("/", response_class=HTMLResponse) 
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
