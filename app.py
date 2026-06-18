@@ -22,7 +22,6 @@ elif  torch.cuda.is_available():
     device = torch.device("cuda")
 else:
     device = torch.device("cpu")
-
 model.to(device)
 
 # Set up Jinja2 templates
